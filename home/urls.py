@@ -13,5 +13,5 @@ urlpatterns = [
     path('diasemana/<int:dia>/', views.dia_semana, name='diasemana'),
     
     # Rota para evitar o erro do link "Produtos"
-    path('produtos/', views.index, name='produto'), 
+    path('produtos/', views.produto, name='produto'), 
 ]
