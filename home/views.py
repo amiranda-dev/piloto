@@ -1,16 +1,24 @@
 from django.shortcuts import render, HttpResponse
 
 def index(request):
-    return HttpResponse('Teste Django')
+    return render(request, 'index.html')
 
 
 def sobre(request):
-    return HttpResponse('Sobre o sistema Django')
+    return render(request, 'sobre.html')
 
 
 def contato(request):
-    return HttpResponse('Esta é uma página de contato')
+    return render(request, 'contato.html')
 
 
 def ajuda(request):
-    return HttpResponse('Está é a página de ajuda.')
+    return render(request, 'ajuda.html')
+
+
+def item(request, id):
+    return render(request, 'exibir_item.html', {'id':id})
+
+
+def perfil(request, usuario):
+    return render(request, 'perfil.html', {'usuario':usuario})
