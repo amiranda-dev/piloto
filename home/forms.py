@@ -2,7 +2,18 @@
 from django import forms
 
 
+from django import forms
+
 class ContatoForm(forms.Form):
+    # Definição das categorias para o campo de Assunto conforme o exercício
+    CATEGORIAS = [
+        ('suporte', 'Suporte técnico'),
+        ('comercial', 'Comercial'),
+        ('reclamacao', 'Reclamação'),
+        ('parceria', 'Parceria'),
+        ('financeiro', 'Financeiro'),
+    ]
+
     nome = forms.CharField(
         max_length=100, 
         label='Nome Completo',
@@ -12,8 +23,29 @@ class ContatoForm(forms.Form):
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'E-mail'})
     )
+
+    # Novo campo: Telefone com o placeholder solicitado
+    telefone = forms.CharField(
+        label='Telefone / WhatsApp',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control', 
+            'placeholder': '(99) 99999-9999'
+        })
+    )
+
+    # Novo campo: Assunto usando o atributo choices
+    assunto = forms.ChoiceField(
+        choices=CATEGORIAS,
+        label='Assunto do contato',
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
     mensagem = forms.CharField(
-        widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escreva sua mensagem', 'rows': 4})
+        widget=forms.Textarea(attrs={
+            'class': 'form-control', 
+            'placeholder': 'Escreva sua mensagem', 
+            'rows': 4
+        })
     )
 
 # forms.py
