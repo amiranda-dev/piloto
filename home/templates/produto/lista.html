@@ -4,6 +4,8 @@
 
 {% block conteudo %}
 
+<button onclick="location= '{% url "form_produto" %}' " type="button" class="btn btn-primary mb-4">Novo Produto</button>
+
      <table class="table table-bordered table-hover mx-auto">
         <thead class="thead-dark">
             <tr>
@@ -15,6 +17,7 @@
         <tbody>
             {% for item in lista %}
                 <tr>
+
                     <td> {{item.id}}</td>
                     <td> {{item.nome}}</td>
                     <td> {{item.preco}}</td>

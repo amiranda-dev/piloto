@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse
+from .forms import ContatoForm, ProdutoForm
+
 
 def index(request):
     return render(request, 'index.html')
@@ -8,8 +10,14 @@ def sobre(request):
     return render(request, 'sobre.html')
 
 
+#view contato
 def contato(request):
-    return render(request, 'contato.html')
+    form = ContatoForm()
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'contato.html', contexto)
+
 
 
 def ajuda(request):
@@ -59,3 +67,11 @@ def produto(request):
     }
      
     return render(request, 'produto/lista.html',contexto)
+
+
+def form_produto(request):
+    form = ProdutoForm() 
+    contexto = {
+        'form': form,
+    }
+    return render(request, 'produto/formulario.html', contexto)
